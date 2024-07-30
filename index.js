@@ -4,12 +4,10 @@ const axios = require('axios');
 const crypto = require('crypto');
 const path = require('path');
 const rateLimit = require('express-rate-limit');
-const { SMA, EMA, WMA, ATR } = require('technicalindicators');
+const { EMA, WMA } = require('technicalindicators');
 
 const app = express();
 const PORT = process.env.PORT || 3176;
-
-console.log(process.env.API_KEY)
 
 // VSA
 const lengthVolumeMA = 20
