@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
 const crypto = require('crypto');
@@ -7,6 +8,8 @@ const { SMA, EMA, WMA, ATR } = require('technicalindicators');
 
 const app = express();
 const PORT = process.env.PORT || 3176;
+
+console.log(process.env.API_KEY)
 
 // VSA
 const lengthVolumeMA = 20
@@ -34,9 +37,9 @@ const userAgentFilter = (req, res, next) => {
 
 app.use(userAgentFilter);
 
-const apiKey = 'N66MHSPCeYFE30iUxl44gDeNMAA7cisEji5VRIqD3gboxoQSihWAhmoi8hT2koH0';
-const apiSecret = 'e9tbP53bdVMWbwWi5qL6ANYJde078x2Y4dX0650Yi9sWe0nHkgrmN8fWHieS4gho';
-const serverSecretKey = 'v6yytBHwWi9967xha456KKK45276hxzBcMN65QqPhg';
+const apiKey = process.env.API_KEY;
+const apiSecret = process.env.API_SECRET;
+const serverSecretKey = process.env.SERVER_SECRET;
 
 const accountEndpoint = '/api/v3/account';
 const pricesEndpoint = '/api/v3/ticker/price';
